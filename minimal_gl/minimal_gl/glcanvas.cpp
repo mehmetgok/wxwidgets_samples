@@ -1,23 +1,24 @@
 #include "glcanvas.h"
 
 BEGIN_EVENT_TABLE(wxGLCanvasSubClass, wxGLCanvas)
-EVT_PAINT(wxGLCanvasSubClass::Paintit)
+    EVT_PAINT(wxGLCanvasSubClass::Paintit)
 END_EVENT_TABLE()
 
 wxGLCanvasSubClass::wxGLCanvasSubClass(wxFrame *parent, int* args)
-	:wxGLCanvas(parent, wxID_ANY, args, wxDefaultPosition, wxDefaultSize, 0, wxT("GLCanvas")) {
-
+	:wxGLCanvas(parent, wxID_ANY, args, wxDefaultPosition, wxDefaultSize, 0, wxT("GLCanvas")) 
+{
+	
 	m_context = new wxGLContext(this);
 
 }
-
 
 wxGLCanvasSubClass::~wxGLCanvasSubClass()
 {
 	delete m_context;
 }
 
-void wxGLCanvasSubClass::Paintit(wxPaintEvent& WXUNUSED(event)) {
+void wxGLCanvasSubClass::Paintit(wxPaintEvent& WXUNUSED(event)) 
+{
 	Render();
 }
 
@@ -54,10 +55,7 @@ void wxGLCanvasSubClass::Render()
 	glVertex3f(getWidth() / 8, getHeight() * 2 / 3, 0);
 	glEnd();
 
-
-
 	
-
 	glFlush();
 	SwapBuffers();
 }
@@ -87,7 +85,6 @@ void wxGLCanvasSubClass::resized(wxSizeEvent& evt)
 
 	Refresh();
 }
-
 
 int wxGLCanvasSubClass::getWidth()
 {
